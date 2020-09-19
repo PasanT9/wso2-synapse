@@ -28,6 +28,7 @@ public class PassThroughConstants {
     public static final String CONNECTION_RELEASE_TIME = "CONNECTION_RELEASE_TIME";
 
     public static final String TRUE = "TRUE";
+    public static final String VALUE_FALSE = "false";
 
     public static final String FAULT_MESSAGE = "FAULT_MESSAGE"; // corresponds with BaseConstants
     public static final String FAULTS_AS_HTTP_200 = "FAULTS_AS_HTTP_200";
