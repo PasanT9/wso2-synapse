@@ -576,4 +576,8 @@ public final class SynapseConstants {
 
     public static final String NO_KEEPALIVE = "NO_KEEPALIVE";
 
+    public static final int DEFAULT_MAX_FAILOVER_RETRIES = -1; //Default set to unlimited retries
+    public static final String MAX_FAILOVER_RETRIES_CONFIG = "maximum.failover.retries";
+    public static final String SUSPEND_DURATION_ON_MAX_FAILOVER_CONFIG = "suspend.duration.on.maximum.failover";
+
 }
