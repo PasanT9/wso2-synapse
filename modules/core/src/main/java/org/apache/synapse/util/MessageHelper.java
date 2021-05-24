@@ -506,7 +506,7 @@ public class MessageHelper {
             String soapPart = attachments.getSOAPPartContentID();
             for (String cID : cIDs) {
                 if (!cID.equals(soapPart)) {
-                    newMC.addAttachment(cID, attachments.getDataHandler(cID));
+                    newMC.addAttachment(cID, attachments.getDataHandler(cID), attachments.getHeaders());
                 }
             }
         }
