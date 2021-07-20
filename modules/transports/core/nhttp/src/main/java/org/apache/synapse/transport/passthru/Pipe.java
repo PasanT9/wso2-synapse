@@ -42,6 +42,9 @@ public class Pipe {
 
     private static final int DEFAULT_TIME_OUT_VALUE = 180000;
 
+    /** Flag to indicate that the Pipe will not produce anything */
+    private boolean discardable = false;
+
     /** IOControl of the reader */
     private IOControl producerIoControl;
 
@@ -349,6 +352,14 @@ public class Pipe {
             this.serializationComplete = serializationComplete;
             consumerIoControl.requestOutput();
         }
+    }
+
+    public boolean isDiscardable() {
+        return discardable ;
+    }
+
+    public void setDiscardable(boolean discardable ) {
+        this.discardable  = discardable ;
     }
 
     public void setRawSerializationComplete(boolean rawSerializationComplete) {
