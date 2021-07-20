@@ -459,12 +459,18 @@ public class RelayUtils {
      * @throws AxisFault AxisFault
      */
     public static void consumeAndDiscardMessage(MessageContext msgContext) throws AxisFault {
-        final Pipe pipe = (Pipe) msgContext.getProperty(PassThroughConstants.PASS_THROUGH_PIPE);
+        // Get the request message context
+        MessageContext requestContext = msgContext;
+        Object outTransportInfo = msgContext.getProperty(Constants.OUT_TRANSPORT_INFO);
+        if (outTransportInfo instanceof ServerWorker) {
+            requestContext = ((ServerWorker) outTransportInfo).getRequestContext();
+        }
+        final Pipe pipe = (Pipe) requestContext.getProperty(PassThroughConstants.PASS_THROUGH_PIPE);
         if (pipe != null) {
             try {
                 while (!pipe.isProducerCompleted() || pipe.isConsumeRequired()) {
                     consume(pipe);
-                    if (pipe.isProducerError()) {
+                    if (pipe.isProducerError() || pipe.isDiscardable()) {
                         break;
                     }
                 }
