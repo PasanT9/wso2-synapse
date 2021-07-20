@@ -660,7 +660,7 @@ public class ServerWorker implements Runnable {
         return null;
     }
 
-    protected MessageContext getRequestContext() {
+    public MessageContext getRequestContext() {
         return msgContext;
     }
 
