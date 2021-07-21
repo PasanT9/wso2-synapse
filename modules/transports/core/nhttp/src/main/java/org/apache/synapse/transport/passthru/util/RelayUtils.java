@@ -42,6 +42,7 @@ import org.apache.synapse.transport.passthru.PassThroughConstants;
 import org.apache.synapse.transport.passthru.Pipe;
 import org.apache.synapse.transport.passthru.TargetRequest;
 import org.apache.synapse.transport.passthru.config.PassThroughConfiguration;
+import org.apache.synapse.transport.passthru.ServerWorker;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.BufferedInputStream;
