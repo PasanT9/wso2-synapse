@@ -42,6 +42,9 @@ public class Pipe {
 
     private static final int DEFAULT_TIME_OUT_VALUE = 180000;
 
+    /** Flag to indicate that the Pipe will not produce anything */
+    private boolean discardable = false;
+
     /** IOControl of the reader */
     private IOControl producerIoControl;
 
@@ -71,9 +74,6 @@ public class Pipe {
     private boolean consumerError = false;
 
     private boolean producerError = false;
-
-    /** Flag to indicate that the Pipe will not produce anything */
-    private boolean discardable = false;
 
     /**
      * Socket Time out value specified in the nttp properties file.
@@ -354,6 +354,14 @@ public class Pipe {
         }
     }
 
+    public boolean isDiscardable() {
+        return discardable ;
+    }
+
+    public void setDiscardable(boolean discardable) {
+        this.discardable  = discardable ;
+    }
+
     public void setRawSerializationComplete(boolean rawSerializationComplete) {
         this.rawSerializationComplete = rawSerializationComplete;
     }
@@ -405,14 +413,6 @@ public class Pipe {
         } finally {
             lock.unlock();
         }
-    }
-
-    public boolean isDiscardable() {
-        return discardable ;
-    }
-
-    public void setDiscardable(boolean discardable) {
-        this.discardable  = discardable ;
     }
 
     /**
