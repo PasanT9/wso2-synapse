@@ -47,6 +47,7 @@ import org.apache.synapse.transport.nhttp.NhttpConstants;
 import org.apache.synapse.transport.passthru.config.TargetConfiguration;
 import org.apache.synapse.transport.passthru.connections.HostConnections;
 import org.apache.synapse.transport.passthru.jmx.PassThroughTransportMetricsCollector;
+import org.apache.synapse.transport.passthru.util.RelayUtils;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -333,6 +334,7 @@ public class TargetHandler implements NHttpClientEventHandler {
                 // State is not REQUEST_DONE. i.e the request is not completely written. But the response is started
                 // receiving, therefore informing a write error has occurred. So the thread which is
                 // waiting on writing the request out, will get notified.
+                RelayUtils.consumeAndDiscardMessage(requestMsgContext);
                 informWriterError(conn);
                 StatusLine errorStatus = response.getStatusLine();
                 /* We might receive a 404 or a similar type, even before we write the request body. */
