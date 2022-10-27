@@ -177,12 +177,13 @@ public class SynapseXPath extends SynapsePath {
 	 String propertyScope = getPropertyScope(xpathString);
 	 // skip message building for scope registry, system and transport scopes
 	 // for get-property() method
-	 if (XMLConfigConstants.SCOPE_REGISTRY.equals(propertyScope)
-			|| XMLConfigConstants.SCOPE_SYSTEM.equals(propertyScope)
-			|| XMLConfigConstants.SCOPE_TRANSPORT.equals(propertyScope)) {
-	    contentAware = false;
-	    return;
-	 }
+        if (XMLConfigConstants.SCOPE_REGISTRY.equals(propertyScope)
+                || XMLConfigConstants.SCOPE_SYSTEM.equals(propertyScope)
+                || XMLConfigConstants.SCOPE_TRANSPORT.equals(propertyScope)
+                || XMLConfigConstants.SCOPE_SYSTEM.equals(propertyScope)) {
+            contentAware = false;
+            return;
+        }
 
         if(xpathString.contains("$trp") || xpathString.contains("$ctx") || xpathString.contains("$axis2")){
             contentAware = false;
